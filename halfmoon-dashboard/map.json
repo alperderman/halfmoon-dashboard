@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Site Management",
+        "desc": "Management of the site contents",
+        "link": "#management",
+        "tags": ["website", "management"]
+    },
+    {
+        "title": "Overview",
+        "desc": "Overall information of the site",
+        "link": "#overview",
+        "tags": ["analyze", "stats"]
+    },
+    {
+        "title": "Account Settings",
+        "desc": "Personal preferences for your account",
+        "link": "#settings",
+        "tags": ["account", "password", "privacy"]
+    },
+    {
+        "title": "Customers",
+        "desc": "See the customer informations",
+        "link": "#customers",
+        "tags": ["customer", "info"]
+    }
+]
