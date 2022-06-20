@@ -1,0 +1,8 @@
+{
+    "header": "Dashboard",
+    "search": "Search",
+    "menus": {
+      "settings": {"type": "link", "name": "Account settings", "href": "{{$host}}"},
+      "logout": {"type": "link", "name": "Log out", "href": "models/api_uas.php?a=logout&redirect=/halfmoon-dashboard/login.html"}
+    }
+}

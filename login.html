@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="http://localhost/halfmoon-dashboard/" />
+    <title>Dashboard | Log In</title>
+  </head>
+  <body style="display:none;">
+
+    <script src="assets/js/dcg.js"></script>
+    <script>
+      document.body.style.display = "none";
+      dcg.render({
+        designSrc: "layouts/login.html",
+        after: function() {
+          document.body.style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html>

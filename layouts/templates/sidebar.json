@@ -1,0 +1,14 @@
+{
+    "header": "Dashboard",
+    "headerLink": "{{$host}}{{$path}}/index.php",
+    "search": "Search",
+    "menus": {
+        "dashboard": {"type": "title", "name": "Overview"},
+        "home": {"type": "link", "name": "Home", "class": "", "href": "{{$host}}{{$path}}/index.php"},
+        "stats": {"type": "link", "name": "Statistics", "class": "", "href": "{{$host}}"},
+        "management": {"type": "link", "name": "Management", "class": "", "href": "{{$host}}"},
+        "account": {"type": "title", "name": "Account"},
+        "account_settings": {"type": "link", "name": "Account settings", "class": "", "href": "{{$host}}"},
+        "logout": {"type": "link", "name": "Log out", "class": "", "href": "models/api_uas.php?a=logout&redirect=/halfmoon-dashboard/login.html"}
+    }
+}

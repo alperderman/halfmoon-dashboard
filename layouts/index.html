@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/halfmoon.css">
+    <link rel="stylesheet" href="assets/icons/index.css">
+  </head>
+  <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-sidebar-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+
+    <div dcg-obj="navbar" dcg-json>
+      <div dcg-src="layouts/templates/navbar.json" dcg-spre></div>
+    </div>
+
+    <div dcg-obj="sidebar" dcg-json>
+      <div dcg-src="layouts/templates/sidebar.json" dcg-spre></div>
+    </div>
+
+    <div dcg-obj="sidebar.menus.home.class">active</div>
+
+    <dcg dcg-temp="navbar" dcg-tref>
+      <dcg dcg-src="layouts/templates/navbar.html" dcg-spre></dcg>
+    </dcg>
+
+    <dcg dcg-temp="sidebar" dcg-tref>
+      <dcg dcg-src="layouts/templates/sidebar.html" dcg-spre></dcg>
+    </dcg>
+
+    <dcg dcg-temp="dashpage" dcg-tref>
+      <dcg dcg-src="layouts/templates/page.html" dcg-spre></dcg>
+    </dcg>
+
+    <dcg dcg-temp="dashpage" dcg-tobj="dash" dcg-tren></dcg>
+
+    <dcg dcg-obj="dash.content">
+      <div class="content">
+        <h1 class="content-title font-size-22">
+          Home
+        </h1>
+      </div>
+      <div class="row row-eq-spacing">
+
+        <dcg dcg-repeat="stats as stat">
+          <div class="col-6 col-md-4 col-lg-3 mt-15">
+            <div class="card p-10 p-md-20">
+              <div class="row">
+                <div class="col">
+                  <span class="h6 font-semibold text-muted text-sm d-block mb-2">{{stat.title}}</span>
+                  <span class="h3 mt-5 font-bold mb-0">{{stat.value}}</span>
+                  <div class="mt-5 mb-0 text-sm">
+                    <dcg dcg-if="'{{stat.type}}' == 'inc'">
+                      <span class="badge badge-success badge-pill">
+                        <i class="icon arrow up"></i>
+                        {{stat.perc}}%
+                      </span>
+                    </dcg>
+                    <dcg dcg-if="'{{stat.type}}' == 'dec'">
+                      <span class="badge badge-danger badge-pill">
+                        <i class="icon arrow down"></i>
+                        {{stat.perc}}%
+                      </span>
+                    </dcg>
+                    <span class="text-nowrap text-xs text-muted">Since last month</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </dcg>
+        
+      </div>
+
+      <div class="row row-eq-spacing-lg">
+        <div class="col-lg-8">
+          <div class="card">
+            <h2 class="card-title">Customers</h2>
+            <div>
+              <chart width="400" height="150" id="lineChart">
+                {
+                  type: "line",
+                  data: {
+                      labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
+                      datasets: [
+                        {
+                          label: 'Dataset 1',
+                          data: [12, 19, 13, 5, 2, 3, 5, 7, 2, 17, 15, 20, 14, 25, 21, 13, 6, 8, 8, 9],
+                          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                          borderColor: 'rgba(54, 162, 235, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Dataset 2',
+                          data: [17, 4, 8, 25, 14, 11, 25, 21, 13, 9, 8, 14, 17, 15, 20, 19, 13, 6, 21, 23],
+                          backgroundColor: 'rgba(64, 150, 87, 0.2)',
+                          borderColor: 'rgba(64, 150, 87, 1)',
+                          borderWidth: 1
+                        }
+                      ]
+                  },
+                  options: {
+                    plugins: {
+                      datalabels: {
+                        display: false,
+                        color: '#ccc',
+                        formatter: function(value, context) {
+                          return context.chart.data.labels[context.dataIndex];
+                        }
+                      }
+                    },
+                    legend: {
+                      display: false
+                    }
+                  }
+                }
+              </chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card">
+            <h2 class="card-title">Breakdown</h2>
+            <div>
+              <chart width="100" height="75" id="pieChart">
+                {
+                  type: "pie",
+                  data: {
+                      labels: ["Desktop","Tablet","Mobile"],
+                      datasets: [
+                        {
+                          label: 'Dataset 1',
+                          data: [32,8,60],
+                          backgroundColor: [
+                          'rgba(54, 162, 235, 0.2)',
+                          'rgba(64, 150, 87, 0.2)',
+                          'rgba(255, 99, 132, 0.2)'
+                          ],
+                          borderColor: [
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(64, 150, 87, 1)',
+                          'rgba(255, 99, 132, 1)'
+                          ],
+                          borderWidth: 1
+                        }
+                      ]
+                  },
+                  options: {
+                    plugins: {
+                      datalabels: {
+                        color: '#ccc',
+                        formatter: function(value, context) {
+                          return context.chart.data.labels[context.dataIndex]+' - '+value+'%';
+                        }
+                      }
+                    },
+                    legend: {
+                      display: false
+                    }
+                  }
+                }
+              </chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </dcg>
+
+    <script>
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      function searchMap() {
+        var input = document.getElementById("search").value;
+        if (input == "") {input = document.getElementById("sideSearch").value;}
+        if (input != "") {
+          window.location.href = "{{$host}}{{$path}}/map.php?q="+encodeURIComponent(input);
+        }
+      }
+
+      halfmoon.keydownHandler = function(event) {
+        event = event || window.event;
+          if (event.which == 13) {
+            searchMap();
+          }
+      }
+
+      window.setInterval(function(){
+        var randomData0 = getRandomInt(2, 33);
+        var randomData1 = getRandomInt(2, 33);
+        chartLoader.charts["lineChart"].data.datasets[0].data.shift();
+        chartLoader.charts["lineChart"].data.datasets[0].data.push(randomData0);
+        chartLoader.charts["lineChart"].data.datasets[1].data.shift();
+        chartLoader.charts["lineChart"].data.datasets[1].data.push(randomData1);
+        chartLoader.charts["lineChart"].update();
+      }, 5000);
+    </script>
+  </body>
+</html>
