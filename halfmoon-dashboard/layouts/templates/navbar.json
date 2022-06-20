@@ -1,8 +1,0 @@
-{
-    "header": "Dashboard",
-    "search": "Search",
-    "menus": {
-      "settings": {"type": "link", "name": "Account settings", "href": "{{$host}}"},
-      "logout": {"type": "link", "name": "Log out", "href": "uas/api.php?a=logout"}
-    }
-}
